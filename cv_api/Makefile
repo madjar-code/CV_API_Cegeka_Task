@@ -36,10 +36,7 @@ volume:
 	docker volume inspect estate-src_postgres_data
 
 test:
-	docker compose exec api pytest -p no:warnings --cov=.
-
-test-html:
-	docker compose exec api pytest -p no:warnings --cov=. --cov-report html
+	docker compose exec api python3 manage.py test
 
 flake8:
 	docker compose exec api flake8 .
