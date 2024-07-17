@@ -14,7 +14,7 @@ DEBUG = env('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -23,6 +23,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+PROJECT_APPS = [
+    'cv_data',
+]
+
+THIRD_PARTY_APPS = [
+    'rest_framework',
+    'corsheaders',
+    'drf_yasg',
+]
+
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,3 +79,10 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+API_TITLE = env('API_TITLE')
+API_VERSION = env('API_VERSION')
+API_DESCRIPTION = env('API_DESCRIPTION')
+API_TERMS_OF_SERVICE = env('API_TERMS_OF_SERVICE')
+API_CONTACT_EMAIL = env('API_CONTACT_EMAIL')
+API_LICENSE_NAME = env('API_LICENSE_NAME')
