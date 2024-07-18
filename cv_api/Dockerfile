@@ -8,14 +8,11 @@ COPY requirements.txt /app/
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./entrypoint.sh .
-RUN sed -i 's/\r$//g' /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
 COPY . /app/
 
 EXPOSE 8000
 
-CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
+RUN python manage.py makemigrations
+RUN python manage.py migrate
 
-ENTRYPOINT [ "/app/entrypoint.sh" ]
+CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]
