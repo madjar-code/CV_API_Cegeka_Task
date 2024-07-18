@@ -26,6 +26,9 @@ makemigrations:
 superuser:
 	docker compose exec api python3 manage.py createsuperuser
 
+print_cv:
+	docker compose exec api python3 manage.py print_cv
+
 collectstatic:
 	docker compose exec api python3 manage.py collectstatic --no-input --clear
 
